@@ -1,0 +1,17 @@
+{
+  "name": "CineWave - Ultimate TMDB Experience",
+  "description": "A high-performance Netflix-style application powered by the TMDB API, featuring advanced filtering, trailers, watch providers, and AI-powered recommendations.",
+  "production_notes": {
+    "security": {
+      "header": "Referrer-Policy: strict-origin-when-cross-origin",
+      "instructions": {
+        "Cloudflare": "Transform Rule -> Modify Response Header -> Referrer-Policy: strict-origin-when-cross-origin",
+        "Nginx": "add_header Referrer-Policy \"strict-origin-when-cross-origin\" always;",
+        "Apache": "Header set Referrer-Policy \"strict-origin-when-cross-origin\"",
+        "WebViews": "IMPORTANTE: Si la app corre en un WebView (iOS/Android), el sistema puede bloquear el Referer. Configure el WebView para permitir el envío de cabeceras de origen o use 'Intent' para abrir el video externamente si el error persiste."
+      }
+    },
+    "verification": "1. Abra DevTools (F12) > Pestaña 'Network'. 2. Filtre por 'youtube-nocookie.com'. 3. Verifique que 'Request Header: Referer' contiene el dominio de su app. 4. Si el Referer es 'no-referrer', YouTube devolverá Error 153."
+  },
+  "requestFramePermissions": []
+}
